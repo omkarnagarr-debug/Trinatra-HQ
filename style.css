@@ -79,10 +79,7 @@ body::before {
     rgba(218, 180, 90, .09),
     transparent 55%
   );
-  z-index: -1 }
-
-body {
-  background: red !important;
+  z-index: -1 
 }
 
 
