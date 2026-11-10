@@ -91,3 +91,129 @@
   <script src="app.js"></script>
 </body>
 </html>
+/* ===== TRINETRA HQ CINEMATIC UPGRADE ===== */
+
+:root {
+  --gold: #e8c778;
+  --glass: rgba(255,255,255,.055);
+  --glass-border: rgba(232,199,120,.25);
+}
+
+body {
+  background:
+    radial-gradient(ellipse at 50% 0%, #302443 0%, transparent 48%),
+    radial-gradient(ellipse at 100% 80%, #171c32 0%, transparent 45%),
+    #080910 !important;
+  background-attachment: fixed;
+}
+
+/* Top navigation */
+.topbar {
+  background: rgba(10,10,18,.72);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+  border-bottom: 1px solid var(--glass-border);
+}
+
+/* Main cinematic hero */
+.hero {
+  background: linear-gradient(
+    135deg,
+    rgba(232,199,120,.13),
+    rgba(255,255,255,.035),
+    rgba(80,65,130,.12)
+  ) !important;
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 15px 55px rgba(0,0,0,.35);
+  animation: heroReveal 1s ease both;
+}
+
+/* Glass surfaces */
+.stat,
+.toolbar,
+.tools,
+.empty,
+.lore-list > *,
+.dialog-head {
+  background: var(--glass);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid var(--glass-border);
+  border-radius: 18px;
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+
+/* Card movement */
+.stat:hover,
+.lore-list > *:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(232,199,120,.12);
+}
+
+/* Golden titles */
+h1, h2, h3, .brand-name {
+  color: var(--gold);
+  text-shadow: 0 0 18px rgba(232,199,120,.22);
+}
+
+/* Glass buttons */
+button, .file-label {
+  border-radius: 12px;
+  transition: all .25s ease;
+}
+
+button:active {
+  transform: scale(.96);
+  box-shadow: 0 0 22px rgba(232,199,120,.25);
+}
+
+/* Cinematic entrance */
+@keyframes heroReveal {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+    filter: blur(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+/* Trishul glow */
+.mark {
+  filter: drop-shadow(0 0 8px rgba(232,199,120,.65));
+  animation: trishulGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes trishulGlow {
+  from { filter: drop-shadow(0 0 4px rgba(232,199,120,.35)); }
+  to { filter: drop-shadow(0 0 17px rgba(232,199,120,.9)); }
+}
+
+/* Dialog glass */
+dialog {
+  background: rgba(13,13,23,.94);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border: 1px solid var(--glass-border);
+  border-radius: 22px;
+  box-shadow: 0 20px 70px rgba(0,0,0,.65);
+}
+
+dialog::backdrop {
+  background: rgba(0,0,0,.72);
+  backdrop-filter: blur(7px);
+}
+
+/* Reduced motion accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
+}
+
