@@ -1,0 +1,10 @@
+{
+  "name": "Trinetra HQ",
+  "short_name": "Trinetra",
+  "description": "Creator's story database",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#0b0e16",
+  "theme_color": "#10131d",
+  "icons": []
+}
