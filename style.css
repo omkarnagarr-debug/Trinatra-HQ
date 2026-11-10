@@ -82,4 +82,93 @@ body::before {
   z-index: -1 
 }
 
+/* ===== TRINETRA CINEMATIC FINAL TOUCH ===== */
+
+/* Floating golden ambient light */
+body::after {
+  content: "";
+  position: fixed;
+  width: 280px;
+  height: 280px;
+  top: 20%;
+  right: -130px;
+  border-radius: 50%;
+  background: rgba(218, 180, 90, 0.10);
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: -1;
+  animation: ambientFloat 8s ease-in-out infinite alternate;
+}
+
+@keyframes ambientFloat {
+  from { transform: translateY(-30px); }
+  to { transform: translateY(100px); }
+}
+
+/* Lore cards cinematic shine */
+.lore-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.lore-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    110deg,
+    transparent 30%,
+    rgba(255,255,255,.09) 50%,
+    transparent 70%
+  );
+  transform: translateX(-120%);
+  transition: transform .7s ease;
+  pointer-events: none;
+}
+
+.lore-card:hover::before {
+  transform: translateX(120%);
+}
+
+/* Premium glass inputs */
+input, textarea, select {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: border-color .3s ease, box-shadow .3s ease;
+}
+
+input:focus, textarea:focus, select:focus {
+  box-shadow: 0 0 16px rgba(232,199,120,.13);
+}
+
+/* Trishul breathing glow */
+.mark {
+  display: inline-block;
+  animation: trishulBreath 2.8s ease-in-out infinite;
+}
+
+@keyframes trishulBreath {
+  0%, 100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 4px #d8a84e);
+  }
+  50% {
+    transform: scale(1.12);
+    filter: drop-shadow(0 0 15px #e8c778);
+  }
+}
+
+/* Smooth page scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Mobile performance */
+@media (max-width: 600px) {
+  .hero, .lore-card, .stat, .tools {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+}
+
 
