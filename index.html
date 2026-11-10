@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#10131d">
+  <meta name="description" content="Trinetra HQ — your story universe, organized.">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="style.css">
+  <title>Trinetra HQ</title>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><div class="mark">🔱</div><div><div class="brand-name">TRINETRA HQ</div><div class="brand-sub" data-i18n="subtitle">CREATOR'S STORY DATABASE</div></div></div>
+    <button id="langBtn" class="ghost small" aria-label="Change language">मराठी</button>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <div class="eyebrow" data-i18n="workspace">YOUR STORY WORKSPACE</div>
+      <h1 data-i18n="welcome">Welcome, Creator.</h1>
+      <p data-i18n="intro">One organized home for every part of your universe.</p>
+      <div class="stats">
+        <div class="stat"><strong id="totalCount">0</strong><span data-i18n="totalLore">Total Lore</span></div>
+        <div class="stat"><strong id="canonCount">0</strong><span data-i18n="canon">Canon</span></div>
+        <div class="stat"><strong id="draftCount">0</strong><span data-i18n="inProgress">In progress</span></div>
+      </div>
+    </section>
+
+    <section class="toolbar">
+      <input id="search" type="search" placeholder="Search Lore..." data-i18n-placeholder="searchPlaceholder">
+      <button id="newBtn" class="primary">＋ <span data-i18n="newLore">New Lore</span></button>
+    </section>
+
+    <section class="section-head">
+      <div><h2 data-i18n="library">Lore Library</h2><p data-i18n="libraryHint">Open any entry to read or edit its complete record.</p></div>
+      <select id="filter" aria-label="Filter">
+        <option value="all" data-i18n="allStatus">All statuses</option>
+        <option value="canon">Canon</option>
+        <option value="developing" data-i18n="developing">Developing</option>
+        <option value="idea" data-i18n="idea">Idea</option>
+      </select>
+    </section>
+
+    <section id="loreList" class="lore-list"></section>
+    <section id="emptyState" class="empty">
+      <div class="empty-icon">📚</div><h3 data-i18n="emptyTitle">Your Lore Library is empty</h3>
+      <p data-i18n="emptyText">Create your first entry. Your story begins here.</p>
+      <button id="emptyNewBtn" class="primary" data-i18n="createFirst">Create first Lore</button>
+    </section>
+
+    <section class="tools">
+      <h2 data-i18n="dataTools">Data & Backup</h2>
+      <p data-i18n="backupHint">Your entries are stored on this device. Export backups regularly.</p>
+      <div class="tool-row">
+        <button id="exportBtn" class="secondary">↓ <span data-i18n="export">Export Backup</span></button>
+        <label class="secondary file-label">↑ <span data-i18n="import">Import Backup</span><input id="importFile" type="file" accept="application/json,.json"></label>
+      </div>
+      <p class="warning" data-i18n="storageWarning">Important: clearing browser data or uninstalling the browser may erase local entries. Keep exported backups somewhere safe.</p>
+    </section>
+    <footer>TRINETRA HQ <span>•</span> v1.0</footer>
+  </main>
+
+  <dialog id="editor">
+    <form id="loreForm" method="dialog">
+      <div class="dialog-head"><div><div class="eyebrow" data-i18n="entryEditor">LORE EDITOR</div><h2 id="editorTitle">New Lore</h2></div><button type="button" id="closeEditor" class="icon-btn">✕</button></div>
+      <label><span data-i18n="titleLabel">Title</span><input id="loreTitle" maxlength="120" required placeholder="e.g. The Three Divine Stones"></label>
+      <label><span data-i18n="categoryLabel">Category</span>
+        <select id="loreCategory">
+          <option value="Lore">Lore</option><option value="Character">Character</option><option value="Villain">Villain</option><option value="Power System">Power System</option><option value="Worldbuilding">Worldbuilding</option><option value="Episode">Episode</option><option value="Timeline">Timeline</option><option value="Idea">Idea</option>
+        </select>
+      </label>
+      <label><span data-i18n="statusLabel">Status</span>
+        <select id="loreStatus"><option value="canon">Canon</option><option value="developing">Developing</option><option value="idea">Idea</option></select>
+      </label>
+      <label><span data-i18n="contentLabel">Complete Lore</span><textarea id="loreContent" rows="12" required placeholder="Write the full lore here..."></textarea></label>
+      <label><span data-i18n="notesLabel">Editor notes (optional)</span><textarea id="loreNotes" rows="3" placeholder="Continuity notes, unresolved questions..."></textarea></label>
+      <div class="form-actions"><button type="button" id="deleteBtn" class="danger hidden" data-i18n="delete">Delete</button><button type="button" id="cancelBtn" class="secondary" data-i18n="cancel">Cancel</button><button type="submit" class="primary" data-i18n="save">Save entry</button></div>
+    </form>
+  </dialog>
+
+  <dialog id="reader">
+    <div class="dialog-head"><div><div class="eyebrow" data-i18n="loreEntry">LORE ENTRY</div><h2 id="readTitle"></h2></div><button id="closeReader" class="icon-btn">✕</button></div>
+    <div class="read-meta" id="readMeta"></div>
+    <article id="readContent" class="read-content"></article>
+    <div id="readNotes" class="read-notes"></div>
+    <section class="history"><h3 data-i18n="versionHistory">Version History</h3><div id="historyList"></div></section>
+    <div class="form-actions"><button id="readerEdit" class="primary" data-i18n="edit">Edit Lore</button></div>
+  </dialog>
+  <div id="toast" role="status" class="toast"></div>
+  <script src="app.js"></script>
+</body>
+</html>
