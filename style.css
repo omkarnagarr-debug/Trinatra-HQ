@@ -80,3 +80,9 @@ body::before {
     transparent 55%
   );
   z-index: -1 }
+
+body {
+  background: red !important;
+}
+
+
